@@ -1,17 +1,16 @@
-#include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
+#include <iostream>
 #include <string.h>
+#include <algorithm>
 using namespace std;
-int partitionn (int *A,int l,int r,int pivot_position);
-void quicksort(int *A,int l,int r);
-int select_random_middle(int *A,int l,int r);
-void swapp(int *A,int i,int j);
 
+int data[10000];
+
+int maxSubArraySum(int size);
 int main (){
 
     int sizee=0;
-    int A[10000]={0};
     char ch[20];
     char X[]="x";
     int i=0;
@@ -19,19 +18,29 @@ int main (){
     while(strcmp(ch,X) != 0)
     {
 
-        A[i]=atoi(ch);
-        //cout<< A[i] << endl;
+        data[i]=atoi(ch);
+
         i++;
         scanf("%19s",&ch);
     }
 
     sizee=i;
+    int x;
 
-    quicksort(A, 0, sizee - 1);
-    for(int c=0;c<sizee;c++)
-        printf("%d ",A[c]);
-    printf("\n");
-
+	x=maxSubArraySum(sizee);
+    cout << "max sum= "<<x;
 
 
+}
+int maxSubArraySum(int size)
+{
+   int max_so_far = data[0];
+   int curr_max = data[0];
+
+   for (int i = 1; i < size; i++)
+   {
+        curr_max = max(data[i], curr_max+data[i]);
+        max_so_far = max(max_so_far, curr_max);
+   }
+   return max_so_far;
 }
