@@ -30,5 +30,17 @@ int main (){
 	x=maxSubArraySum(sizee);
     cout << "max sum= "<<x;
 
+}
+int maxSubArraySum(int size)
+{
+   int max_so_far = data[0];
+   int curr_max = data[0];
 
+   for (int i = 1; i < size; i++)
+   {
+        curr_max = max(data[i], curr_max+data[i]);
+        max_so_far = max(max_so_far, curr_max);
+   }
+   return max_so_far;
+}
 
