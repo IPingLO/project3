@@ -5,7 +5,8 @@
 #include <algorithm>
 using namespace std;
 
-int data[10000];
+
+int data[100000];
 
 int maxSubArraySum(int size);
 int main (){
